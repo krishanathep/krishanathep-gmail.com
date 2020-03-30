@@ -116,7 +116,7 @@ class App extends Component {
                 </form>
               </div>
               <div className="col-md-12">
-                <table className="table table-striped mt-5">
+                <table className="table table-bordered mt-5">
                   <tr>
                     <th>Title</th>
                     <th>Description</th>
