@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/react-firebase-app/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/react-firebase-app/static/js/main.775a3fd6.chunk.js",
-    "main.js.map": "/react-firebase-app/static/js/main.775a3fd6.chunk.js.map",
+    "main.css": "/react-firebase-app/static/css/main.69eda509.chunk.css",
+    "main.js": "/react-firebase-app/static/js/main.1cc3c363.chunk.js",
+    "main.js.map": "/react-firebase-app/static/js/main.1cc3c363.chunk.js.map",
     "runtime-main.js": "/react-firebase-app/static/js/runtime-main.8f0e13ed.js",
     "runtime-main.js.map": "/react-firebase-app/static/js/runtime-main.8f0e13ed.js.map",
     "static/js/2.f915155d.chunk.js": "/react-firebase-app/static/js/2.f915155d.chunk.js",
     "static/js/2.f915155d.chunk.js.map": "/react-firebase-app/static/js/2.f915155d.chunk.js.map",
     "index.html": "/react-firebase-app/index.html",
-    "precache-manifest.1eaea09d3b079c7312b04dadbc786ff6.js": "/react-firebase-app/precache-manifest.1eaea09d3b079c7312b04dadbc786ff6.js",
+    "precache-manifest.f2746efb515dbf78de83a9a883ec0714.js": "/react-firebase-app/precache-manifest.f2746efb515dbf78de83a9a883ec0714.js",
     "service-worker.js": "/react-firebase-app/service-worker.js",
-    "static/css/main.5ecd60fb.chunk.css.map": "/react-firebase-app/static/css/main.5ecd60fb.chunk.css.map",
+    "static/css/main.69eda509.chunk.css.map": "/react-firebase-app/static/css/main.69eda509.chunk.css.map",
     "static/js/2.f915155d.chunk.js.LICENSE.txt": "/react-firebase-app/static/js/2.f915155d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8f0e13ed.js",
     "static/js/2.f915155d.chunk.js",
-    "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.775a3fd6.chunk.js"
+    "static/css/main.69eda509.chunk.css",
+    "static/js/main.1cc3c363.chunk.js"
   ]
 }
