@@ -1,13 +1,13 @@
 import * as firebase from 'firebase'
 
 const config = {
-    apiKey: "AIzaSyABHyyHWCMV1OZx40hJZ9oor3W4jLRSJ34",
-    authDomain: "v-fire-bbd63.firebaseapp.com",
-    databaseURL: "https://v-fire-bbd63.firebaseio.com",
-    projectId: "v-fire-bbd63",
-    storageBucket: "v-fire-bbd63.appspot.com",
-    messagingSenderId: "674916818379",
-    appId: "1:674916818379:web:969de3cd17160cbd8faa4e"
+    apiKey: "AIzaSyDid7wdYVVIQ403LURGpoYv_TPRyZ4RtiY",
+    authDomain: "fir-project-2c749.firebaseapp.com",
+    databaseURL: "https://fir-project-2c749.firebaseio.com",
+    projectId: "fir-project-2c749",
+    storageBucket: "fir-project-2c749.appspot.com",
+    messagingSenderId: "326945188628",
+    appId: "1:326945188628:web:aa5531e0a440c6e9a07001"
 }
 firebase.initializeApp(config)
 
