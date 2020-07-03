@@ -42,6 +42,14 @@ export class Todos extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
+    if(!this.state.title) {
+      return alert('Please input data!');
+    }
+
+    if(!this.state.description) {
+      return alert('Please input data!');
+    }
+
     if (this.state.item_id !== "") {
       return this.updateItem();
     }
@@ -95,11 +103,10 @@ export class Todos extends Component {
     return (
       <div className="Todos">
         <div className="container">
-          <h1 className="mt-3">REACTJS + FIREBASE</h1>
           <div className="row">
             <div className="col-md-12">
               <button
-                className="btn btn-info float-right"
+                className="btn btn-info float-right mt-3"
                 data-toggle="modal"
                 data-target="#createModal"
               >
