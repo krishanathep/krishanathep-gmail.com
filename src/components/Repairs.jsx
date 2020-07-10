@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import firebase from "firebase";
+import Moment from "react-moment";
+import "moment-timezone";
 
 export class Repairs extends Component {
   constructor(props) {
     super(props);
     this.state = {
       repairs: [],
-      no: 1,
       repair_id: "",
-      id: "",
+      id: "ROS-",
       job: "",
       detail: "",
       staff: "",
@@ -64,11 +65,12 @@ export class Repairs extends Component {
       job: this.state.job,
       detail: this.state.detail,
       staff: this.state.staff,
-      date: this.state.date,
+      date: firebase.database.ServerValue.TIMESTAMP,
       status: this.state.status,
     };
 
     repairRef.push(repair);
+
     this.setState({
       repair_id: "",
       id: "",
@@ -147,12 +149,11 @@ export class Repairs extends Component {
             </button>
           </div>
           <div className="col-md-12">
-            <table className="table table-hover">
+            <table className="table table-hover table-bordered">
               <thead>
                 <tr align="center">
-                  <th>NO</th>
-                  <th>ID</th>
-                  <th>Repair</th>
+                  <th>Job ID</th>
+                  <th>Equipment</th>
                   <th>Detail</th>
                   <th>Staff</th>
                   <th>Status</th>
@@ -163,15 +164,21 @@ export class Repairs extends Component {
               <tbody>
                 {this.state.repairs.map((repair) => (
                   <tr key={repair.id}>
-                    <td align="center">{this.state.no ++}</td>
                     <td>{repair.id}</td>
                     <td>{repair.job}</td>
                     <td>{repair.detail}</td>
                     <td>{repair.staff}</td>
                     <td>
-                      <span class="badge badge-success">{repair.status}</span>
+                    {(() => {
+                        switch(repair.status){
+                          case 'Waiting': return <span className='badge badge-danger'>{repair.status}</span>
+                          case 'Finish': return <span className='badge badge-success'>{repair.status}</span>
+                        }
+                      })()}
                     </td>
-                    <td>{repair.date}</td>
+                    <td>
+                      <Moment format="DD/MM/YYYY">{repair.date}</Moment>
+                    </td>
                     <td>
                       <button
                         className="btn btn-info btn-sm"
@@ -243,24 +250,31 @@ export class Repairs extends Component {
                           />
                         </div>
                         <div className="col-md-6 form-group">
-                          <label htmlFor="">Job :</label>
-                          <input
-                            type="text"
-                            className="form-control"
+                          <label for="sel1">Job :</label>
+                          <select
+                            class="form-control"
+                            id="sel1"
                             name="job"
                             onChange={this.handleChange}
                             value={this.state.job}
-                          />
+                          >
+                            <option>Select...</option>
+                            <option>Computer</option>
+                            <option>Software</option>
+                            <option>Printer</option>
+                            <option>Network</option>
+                          </select>
                         </div>
-                        <div className="col-md-6 form-group">
+                        <div className="col-md-12 form-group">
                           <label htmlFor="">Detail :</label>
-                          <input
-                            type="text"
-                            className="form-control"
+                          <textarea
                             name="detail"
+                            cols="30"
+                            rows="5"
+                            className="form-control"
                             onChange={this.handleChange}
                             value={this.state.detail}
-                          />
+                          ></textarea>
                         </div>
                         <div className="col-md-6 form-group">
                           <label htmlFor="">Staff</label>
@@ -270,16 +284,6 @@ export class Repairs extends Component {
                             name="staff"
                             onChange={this.handleChange}
                             value={this.state.staff}
-                          />
-                        </div>
-                        <div className="col-md-6 form-group">
-                          <label htmlFor="">Date :</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="date"
-                            onChange={this.handleChange}
-                            value={this.state.date}
                           />
                         </div>
                         <div className="col-md-6 form-group">
@@ -340,24 +344,30 @@ export class Repairs extends Component {
                           />
                         </div>
                         <div className="col-md-6 form-group">
-                          <label htmlFor="">Job :</label>
-                          <input
-                            type="text"
-                            className="form-control"
+                          <label for="sel1">Job :</label>
+                          <select
+                            class="form-control"
+                            id="sel1"
                             name="job"
                             onChange={this.handleChange}
                             value={this.state.job}
-                          />
+                          >
+                            <option>Computer</option>
+                            <option>Software</option>
+                            <option>Printer</option>
+                            <option>Network</option>
+                          </select>
                         </div>
-                        <div className="col-md-6 form-group">
+                        <div className="col-md-12 form-group">
                           <label htmlFor="">Detail :</label>
-                          <input
-                            type="text"
-                            className="form-control"
+                          <textarea
                             name="detail"
+                            cols="30"
+                            rows="5"
+                            className="form-control"
                             onChange={this.handleChange}
                             value={this.state.detail}
-                          />
+                          ></textarea>
                         </div>
                         <div className="col-md-6 form-group">
                           <label htmlFor="">Staff</label>
@@ -370,24 +380,17 @@ export class Repairs extends Component {
                           />
                         </div>
                         <div className="col-md-6 form-group">
-                          <label htmlFor="">Date :</label>
-                          <input
-                            type="text"
-                            className="form-control"
-                            name="date"
-                            onChange={this.handleChange}
-                            value={this.state.date}
-                          />
-                        </div>
-                        <div className="col-md-6 form-group">
-                          <label htmlFor="">Status :</label>
-                          <input
-                            type="text"
-                            className="form-control"
+                          <label for="sel1">Status :</label>
+                          <select
+                            class="form-control"
+                            id="sel1"
                             name="status"
                             onChange={this.handleChange}
                             value={this.state.status}
-                          />
+                          >
+                            <option>Waiting</option>
+                            <option>Finish</option>
+                          </select>
                         </div>
                       </div>
                     </div>
@@ -444,7 +447,11 @@ export class Repairs extends Component {
                         </tr>
                         <tr>
                           <th>Date</th>
-                          <td>{this.state.date}</td>
+                          <td>
+                            <Moment format="DD/MM/YYYY">
+                              {this.state.date}
+                            </Moment>
+                          </td>
                         </tr>
                         <tr>
                           <th>Status</th>
