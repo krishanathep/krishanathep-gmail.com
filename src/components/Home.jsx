@@ -1,12 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../layouts/Navbar";
 
 export class Home extends Component {
   render() {
     return (
       <div className="Home">
-        <Navbar />
         <div className="container">
           <div className="row mt-3">
             <div className="col-md-3">

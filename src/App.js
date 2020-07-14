@@ -5,13 +5,14 @@ import Home from "./components/Home";
 import Equipments from "./components/Equipments";
 import LoginPage from "./components/LoginPage";
 import SignUp from "./components/SignUp";
+import Navbar from "./layouts/Navbar";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <HashRouter basename="/">
-          
+          <Navbar/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path='/repairs' component={Repairs} />
