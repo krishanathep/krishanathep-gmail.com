@@ -33,6 +33,11 @@ export class Navbar extends Component {
                     EQUIPMENTS
                   </Link>
                 </li>
+                <li className='nav-item'>
+                  <Link className='nav-link' to='/login'>
+                    SIGN OUT
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
