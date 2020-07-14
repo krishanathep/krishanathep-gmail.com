@@ -12,10 +12,10 @@ class App extends Component {
       <div className="App">
         <HashRouter basename="/">
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route path="/" component={Home} />
             <Route path='/repairs' component={Repairs} />
             <Route path='/equipments' component={Equipments} />
-            <Route path='/login' component={LoginPage} />
+            <Route exact path='/login' component={LoginPage} />
             <Route path='/signup' component={SignUp} />
           </Switch>
         </HashRouter>
