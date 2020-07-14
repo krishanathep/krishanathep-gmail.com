@@ -8,6 +8,7 @@ export class Repairs extends Component {
     super(props);
     this.state = {
       repairs: [],
+      equipments:[],
       repair_id: "",
       id: "ROS-",
       job: "",
@@ -20,7 +21,31 @@ export class Repairs extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(){
+    this.repairFetch()
+    this.equipmentFetch()
+  }
+
+  equipmentFetch() {
+    const eqRef = firebase.database().ref('equipments')
+    eqRef.on('value', (snapshot)=>{
+      let equipments= snapshot.val();
+      let newState= [];
+      for (let equipment in equipments){
+        newState.push({
+          equipment_id: equipment,
+          name: equipments[equipment].name,
+          detail: equipments[equipment].detail,
+          category: equipments[equipment].category,
+        })
+      }
+      this.setState({
+        equipments: newState
+      })
+    })
+  }
+
+  repairFetch() {
     const repairRef = firebase.database().ref("repairs");
     repairRef.on("value", (snapshot) => {
       let repairs = snapshot.val();
@@ -121,8 +146,10 @@ export class Repairs extends Component {
   }
 
   onClickDelete(repair_id) {
-    let repairRef = firebase.database().ref("repairs");
-    repairRef.child(repair_id).remove();
+    if(window.confirm('Are you sure you want to delete this Job?')){
+      let repairRef = firebase.database().ref("repairs");
+      repairRef.child(repair_id).remove();
+    }
   }
 
   resetItem = () => {
@@ -136,6 +163,7 @@ export class Repairs extends Component {
   };
 
   render() {
+    var no = 1;
     return (
       <div className="Repairs container">
         <div className="row">
@@ -148,22 +176,24 @@ export class Repairs extends Component {
               <i className="fa fa-plus"></i> CREATE
             </button>
           </div>
-          <div className="col-md-12">
+          <div className="col-md-12">     
             <table className="table table-hover table-bordered">
               <thead>
                 <tr align="center">
+                  <th>No</th>
                   <th>Job ID</th>
                   <th>Equipment</th>
                   <th>Detail</th>
                   <th>Staff</th>
                   <th>Status</th>
                   <th>Date</th>
-                  <th>Actions</th>
+                  <th width='200px'>Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {this.state.repairs.map((repair) => (
                   <tr key={repair.id}>
+                    <td>{no++}</td>
                     <td>{repair.id}</td>
                     <td>{repair.job}</td>
                     <td>{repair.detail}</td>
@@ -171,8 +201,8 @@ export class Repairs extends Component {
                     <td>
                     {(() => {
                         switch(repair.status){
-                          case 'Waiting': return <span className='badge badge-danger'>{repair.status}</span>
                           case 'Finish': return <span className='badge badge-success'>{repair.status}</span>
+                          default : return <span className='badge badge-danger'>{repair.status}</span>
                         }
                       })()}
                     </td>
@@ -226,7 +256,7 @@ export class Repairs extends Component {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </table>     
             <div class="modal fade" id="createModal">
               <div class="modal-dialog">
                 <div class="modal-content">
@@ -250,7 +280,7 @@ export class Repairs extends Component {
                           />
                         </div>
                         <div className="col-md-6 form-group">
-                          <label for="sel1">Job :</label>
+                          <label for="sel1">Equipment :</label>
                           <select
                             class="form-control"
                             id="sel1"
@@ -258,11 +288,10 @@ export class Repairs extends Component {
                             onChange={this.handleChange}
                             value={this.state.job}
                           >
-                            <option>Select...</option>
-                            <option>Computer</option>
-                            <option>Software</option>
-                            <option>Printer</option>
-                            <option>Network</option>
+                            <option>Please Select...</option>
+                            {this.state.equipments.map(eq=>(
+                            <option>{eq.name}</option>
+                            ))}
                           </select>
                         </div>
                         <div className="col-md-12 form-group">
@@ -352,10 +381,9 @@ export class Repairs extends Component {
                             onChange={this.handleChange}
                             value={this.state.job}
                           >
-                            <option>Computer</option>
-                            <option>Software</option>
-                            <option>Printer</option>
-                            <option>Network</option>
+                            {this.state.equipments.map(eq=>(
+                            <option>{eq.name}</option>
+                            ))}
                           </select>
                         </div>
                         <div className="col-md-12 form-group">

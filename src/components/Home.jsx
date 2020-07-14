@@ -17,7 +17,7 @@ export class Home extends Component {
               </Link>
             </div>
             <div className="col-md-3">
-              <Link to="/repairs">
+              <Link to="/equipments">
                 <div className="card-counter primary">
                   <i className="fas fa-desktop"></i>
                   <span className="count-numbers">80</span>

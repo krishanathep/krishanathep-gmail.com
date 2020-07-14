@@ -4,6 +4,7 @@ import Todos from "./components/Todos";
 import Navbar from "./layouts/Navbar";
 import Repairs from "./components/Repairs";
 import Home from "./components/Home";
+import Equipments from "./components/Equipments";
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path='/repairs' component={Repairs} />
             <Route path='/todos' component={Todos} />
+            <Route path='/equipments' component={Equipments} />
           </Switch>
         </HashRouter>
       </div>

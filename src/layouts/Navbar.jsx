@@ -24,18 +24,13 @@ export class Navbar extends Component {
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                  <Link className="nav-link" to="/">
-                    HOME
-                  </Link>
-                </li>
-                <li className="nav-item">
                   <Link className="nav-link" to="/repairs">
                     REPAIRS
                   </Link>
                 </li>
                 <li className='nav-item'>
-                  <Link className='nav-link' to='/todos'>
-                    TODOS
+                  <Link className='nav-link' to='/equipments'>
+                    EQUIPMENTS
                   </Link>
                 </li>
               </ul>
