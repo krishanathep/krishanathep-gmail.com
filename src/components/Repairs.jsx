@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import Moment from "react-moment";
 import "moment-timezone";
+import Navbar from '../layouts/Navbar'
 
 export class Repairs extends Component {
   constructor(props) {
@@ -165,7 +166,9 @@ export class Repairs extends Component {
   render() {
     var no = 1;
     return (
-      <div className="Repairs container">
+      <div className="Repairs">
+        <Navbar/>
+        <div className="container">
         <div className="row">
           <div className="col-md-12 mt-3">
             <button
@@ -503,6 +506,7 @@ export class Repairs extends Component {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     );

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { HashRouter, Switch, Route } from "react-router-dom";
-import Navbar from "./layouts/Navbar";
 import Repairs from "./components/Repairs";
 import Home from "./components/Home";
 import Equipments from "./components/Equipments";
@@ -12,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <HashRouter basename="/">
-          <Navbar />
+          
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path='/repairs' component={Repairs} />
