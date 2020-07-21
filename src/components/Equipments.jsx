@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from '../firebase'
 import Moment from "react-moment";
 import "moment-timezone";
+import Navbar from '../layouts/Navbar'
 
 export class Equipments extends Component {
   constructor(props) {
@@ -18,7 +19,24 @@ export class Equipments extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
+  componentDidMount(){
+    this.userSignin()
+    this.equipRef()
+  }
+
+  userSignin() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log("Hello", user.displayName);
+      } else {
+        window.location = "/";
+
+        console.log("Please Login!");
+      }
+    });
+  }
+
+  equipRef() {
       const equipmentRef = firebase.database().ref('equipments')
       equipmentRef.on('value', (snapshot)=>{
           let equipments = snapshot.val();
@@ -119,6 +137,7 @@ export class Equipments extends Component {
     var id = 1;
     return (
       <div className="Equipments">
+        <Navbar/>
         <div className="container">
         <div className="row">
           <div className="col-md-12 mt-3 mb-3">

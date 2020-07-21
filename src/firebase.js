@@ -1,4 +1,4 @@
-import * as firebase from 'firebase'
+import firebase from 'firebase'
 
 const config = {
     apiKey: "AIzaSyDid7wdYVVIQ403LURGpoYv_TPRyZ4RtiY",
@@ -8,7 +8,10 @@ const config = {
     storageBucket: "fir-project-2c749.appspot.com",
     messagingSenderId: "326945188628",
     appId: "1:326945188628:web:aa5531e0a440c6e9a07001"
-}
-firebase.initializeApp(config)
+  };
 
-export default firebase
+  firebase.initializeApp(config)
+  
+  export const provider = new firebase.auth.GoogleAuthProvider();
+  export const auth = firebase.auth();
+  export default firebase;

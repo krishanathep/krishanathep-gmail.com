@@ -1,10 +1,25 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Navbar from '../layouts/Navbar'
+import firebase from '../firebase'
 
 export class Home extends Component {
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log("Hello", user.displayName);
+      } else {
+        window.location = "/";
+
+        console.log("Please Login!");
+      }
+    });
+  }
+  
   render() {
     return (
       <div className="Home">
+        <Navbar/>
         <div className="container">
           <div className="row mt-3">
             <div className="col-md-3">
