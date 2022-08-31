@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "firebase": "^7.13.1",
     "moment": "^2.27.0",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "react": "^16.13.1",
     "react-autoid": "^0.1.2",
     "react-dom": "^16.13.1",
